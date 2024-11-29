@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { HiBars3 } from "react-icons/hi2";
 import FirstImage from "@/app/assets/img2.jpg";
 import ThirdImage from "@/app/assets/img3.webp";
 import { MdFileUpload } from "react-icons/md";
@@ -7,40 +6,14 @@ import { GiArtificialIntelligence, GiExtractionOrb } from "react-icons/gi";
 import { CgSearchFound } from "react-icons/cg";
 import { PiGoogleDriveLogo } from "react-icons/pi";
 import { TbFileUpload } from "react-icons/tb";
-import { FcAutomatic } from "react-icons/fc";
 import { BiSearch } from "react-icons/bi";
+import NavBar from "@/components/ui/Navbar";
 
 export default function Home() {
   return (
     <div className="p-3 ">
       <header className="bg-gradient-to-tr from-yellow-200 to-purple-200  rounded-lg">
-        <nav className="p-4 ">
-          <div className="bg-white p-3 flex justify-between items-center rounded-md">
-            <div>
-              <h2 className="font-bold text-2xl ">IntraDocs</h2>
-            </div>
-            <div className="sm:hidden">
-              {" "}
-              <HiBars3 size={28} />{" "}
-            </div>
-            <div className="hidden sm:block">
-              <ul className="flex font-semibold space-x-4 items-center lg:space-x-8 xl:space-x-12">
-                <li className="hover:text-slate-600 cursor-pointer transform  transition-all duration-300">
-                  Pricing
-                </li>
-                <li className="hover:text-slate-600 cursor-pointer transform  transition-all duration-300">
-                  Blog
-                </li>
-                <li className="bg-slate-200 hover:bg-slate-600 hover:text-white transform  transition-all duration-300 rounded-md p-2 cursor-pointer text-black">
-                  Login
-                </li>
-                <li className="hover:bg-slate-600 hover:text-black transform  transition-all duration-300 bg-black rounded-md p-2 cursor-pointer text-white">
-                  Sign up
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
+        <NavBar />
         <div className="text-center mt-10 px-4 pb-20 md:w-2/3 md:mx-auto">
           <h2 className="text-3xl font-bold  lg:text-5xl xl:text-6xl">
             Revolutionize Your Document With Ease
