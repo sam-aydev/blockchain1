@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Signup() {
   return (
     <div>
-      <div className="bg-gradient-to-tr from-yellow-200 to-purple-200 h-screen rounded-lg">
+      <div className="bg-gradient-to-tr from-yellow-200 to-purple-200 h-screen">
         <NavBar />
         <div className="p-3 ">
           <div className="bg-white w-full rounded-2xl p-3 sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3 sm:mx-auto">
