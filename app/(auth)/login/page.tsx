@@ -7,11 +7,11 @@ export default function Login() {
       <div className="bg-gradient-to-tr from-yellow-200 to-purple-200 h-screen">
         <NavBar />
         <div className="p-3 mt-20">
-          <div className="bg-white w-full rounded-2xl p-3 sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3 sm:mx-auto">
+          <div className="bg-white w-full rounded-2xl p-6 sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3 sm:mx-auto">
             <h2 className="text-3xl w-3/4 mx-auto font-bold text-center">
               Login Now!
             </h2>
-            <form action="" className="w-full mt-5">
+            <form action={login} className="w-full mt-5">
               <div className="w-full mt-2">
                 <label htmlFor="email" className="block font-semibold py-2">
                   Email:
@@ -37,7 +37,7 @@ export default function Login() {
               </div>
 
               <button className="w-full py-2 text-white font-semibold bg-black rounded mt-2">
-                Register My Account!
+                Login
               </button>
               <p>
                 I don't have an account yet?{" "}

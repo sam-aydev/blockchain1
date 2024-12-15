@@ -1,7 +1,7 @@
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 
-export default  function Middleware(){
+export default async function Middleware(){
     // const session = await auth()
     // if(!session?.user) redirect("/dashboard")
         return(
