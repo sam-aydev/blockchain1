@@ -1,7 +1,19 @@
+"use client"
 import NavBar from "@/components/ui/Navbar";
 import Link from "next/link";
+import { login } from "@/lib/actions";
+import AuthButton from "@/components/ui/AuthButton";
+import { signIn } from "next-auth/react";
+import { redirect } from "next/navigation";
+
 
 export default function Login() {
+
+  const credentialsAction = (formData: FormData ) => {
+    signIn("credentials", formData, {
+      redirectTo:"/dashboard"
+    } )
+  }
   return (
     <div> 
       <div className="bg-gradient-to-tr from-yellow-200 to-purple-200 h-screen">
@@ -11,7 +23,7 @@ export default function Login() {
             <h2 className="text-3xl w-3/4 mx-auto font-bold text-center">
               Login Now!
             </h2>
-            <form action={login} className="w-full mt-5">
+            <form action={credentialsAction} className="w-full mt-5">
               <div className="w-full mt-2">
                 <label htmlFor="email" className="block font-semibold py-2">
                   Email:
@@ -36,9 +48,7 @@ export default function Login() {
                 />
               </div>
 
-              <button className="w-full py-2 text-white font-semibold bg-black rounded mt-2">
-                Login
-              </button>
+              <input type="submit" value="Sign In" />
               <p>
                 I don't have an account yet?{" "}
                 <Link href="/signup">

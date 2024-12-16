@@ -4,10 +4,12 @@ import Credentials from "next-auth/providers/credentials";
 import { db } from "./db";
 import bcrypt from "bcryptjs"
 
-export const { handlers, signIn, signOut, auth} = NextAuth({
-    session: { strategy: "jwt"},
-    adapter: PrismaAdapter(db),
-    providers: [Credentials({
+export const { handlers: { GET, POST}, signIn, signOut, auth} = NextAuth({
+    pages: {
+        signIn: "/login",
+      },
+    providers: [
+        Credentials({
         name: "Credentials",
         credentials:{
             email: {
