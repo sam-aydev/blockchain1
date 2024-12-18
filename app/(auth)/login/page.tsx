@@ -3,17 +3,27 @@ import NavBar from "@/components/ui/Navbar";
 import Link from "next/link";
 import { login } from "@/lib/actions";
 import AuthButton from "@/components/ui/AuthButton";
-import { signIn } from "next-auth/react";
-import { redirect } from "next/navigation";
+import { signIn, useSession } from "next-auth/react";
+import { redirect, useRouter } from "next/navigation";
 
 
 export default function Login() {
+  const router = useRouter()
+  const {data: session, status} = useSession()
 
-  const credentialsAction = (formData: FormData ) => {
-    signIn("credentials", formData, {
-      redirectTo:"/dashboard"
-    } )
+  const credentialsAction = async (formData: FormData | any ) => {
+    console.log(formData)
+   await signIn("credentials", {
+      email: formData.get("email"),
+      password: formData.get("password"),
+      redirect: true,
+      redirectTo: "https://urban-space-acorn-x66rp7ggwqvc6xrj-3000.app.github.dev/dashboard",
+      callbackUrl: "https://urban-space-acorn-x66rp7ggwqvc6xrj-3000.app.github.dev/dashboard"
+    })
+
   }
+  if(status=== "authenticated") router.push("/dashboard")
+ 
   return (
     <div> 
       <div className="bg-gradient-to-tr from-yellow-200 to-purple-200 h-screen">
@@ -26,7 +36,7 @@ export default function Login() {
             <form action={credentialsAction} className="w-full mt-5">
               <div className="w-full mt-2">
                 <label htmlFor="email" className="block font-semibold py-2">
-                  Email:
+                  Email
                 </label>
                 <input
                   type="email"
@@ -38,7 +48,7 @@ export default function Login() {
 
               <div className="w-full mt-2">
                 <label htmlFor="password" className="block font-semibold py-2">
-                  Password:
+                  Password
                 </label>
                 <input
                   type="password"
@@ -48,7 +58,7 @@ export default function Login() {
                 />
               </div>
 
-              <input type="submit" value="Sign In" />
+              <button className="" type="submit">SIgnin</button>
               <p>
                 I don't have an account yet?{" "}
                 <Link href="/signup">

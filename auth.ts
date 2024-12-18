@@ -3,8 +3,10 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { db } from "./db";
 import bcrypt from "bcryptjs"
+import { redirect } from "next/navigation";
 
 export const { handlers: { GET, POST}, signIn, signOut, auth} = NextAuth({
+    
     pages: {
         signIn: "/login",
       },
@@ -26,6 +28,7 @@ export const { handlers: { GET, POST}, signIn, signOut, auth} = NextAuth({
             if(!credentials.email || !credentials.password || !credentials){
                 return null
             }
+            console.log(credentials)
             const email = credentials.email as string
             const hashedPassword: string = await bcrypt.hash(credentials.password as string, 10 )
             const user = await db.user.findUnique({

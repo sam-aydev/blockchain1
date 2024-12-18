@@ -1,24 +1,22 @@
-
-import { auth, signOut } from "@/auth";
+"use client"
+import { signOut } from "next-auth/react";
 import { logout } from "@/lib/actions";
 // interface User{
 //     email: string;
 //     password: string;
 //     username: string
 // }
-export default async function Dashboard(){
-    const session : any = await auth()
+export default  function Dashboard(){
     return (
         <>
-           <form
-      action={async () => {
-        "use server"
-        await signOut()
-      }}
-    >
-      <button type="submit">Sign Out</button>
-    </form>
-            <p>{session}</p>
+       
+    
+    <button onClick ={()=> signOut({ redirect: true, 
+      redirectTo: "https://urban-space-acorn-x66rp7ggwqvc6xrj-3000.app.github.dev/login",
+      callbackUrl: "https://urban-space-acorn-x66rp7ggwqvc6xrj-3000.app.github.dev/login"
+    })}>Sign Out</button>
+
+            
         </>
     )
 }
